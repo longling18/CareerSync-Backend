@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('department', function (Blueprint $table) {
             $table->id('dep_id');
+            $table->string('dep_name');
             $table->string('description');
         });
     }

@@ -26,7 +26,8 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/logout',    'logout');
     });
     Route::controller(UserController::class)->group(function () {
-        Route::put('/user/{id}',  'update')->name('user.update');
+        Route::put('/user/{id}',          'update')->name('user.update');
+        Route::get('/user/{id}',          'show');
         Route::put('/user/password/{id}', 'password')->name('user.password');
     });
 });
