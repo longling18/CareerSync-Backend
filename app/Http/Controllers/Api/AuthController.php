@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -10,7 +9,7 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Hash;
 
-class LoginController extends Controller
+class AuthController extends Controller
 {
     public function login(UserRequest $request)
     {

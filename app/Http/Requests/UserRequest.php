@@ -26,37 +26,29 @@ class UserRequest extends FormRequest
                 'email' => 'required|string|email|max:255',
                 'password' => 'required|max:6',
             ];
-        }
-
-        if (request()->routeIs('user.store')) {
+        } else if (request()->routeIs('user.store')) {
             return [
                 'first_name' => 'required|string|max:255',
                 'last_name' => 'required|string|max:255',
                 'email' => 'required|email|unique:users,email',
                 'password' => 'required|min:6|confirmed',
             ];
-        }
-
-        if (request()->routeIs('user.update')) {
+        } else if (request()->routeIs('user.update')) {
             return [
-                'name' => 'required|string|max:255',
+                'first_name' => 'required|string|max:255',
+                'last_name' => 'required|string|max:255',
+                'email' => 'required|email|unique:users,email'
             ];
-        }
-
-        if (request()->routeIs('user.email')) {
+        } else if (request()->routeIs('user.email')) {
             return [
                 'email' => 'required|email|unique:users,email'
             ];
-        }
-
-        if (request()->routeIs('user.password')) {
+        } else if (request()->routeIs('user.password')) {
             return [
                 'current_password' => 'required|string|min:6',
                 'new_password' => 'required|string|min:6'
             ];
-        }
-
-        // Default case, return an empty array
-        return [];
+        } else  // Default case, return an empty array
+            return [];
     }
 }
