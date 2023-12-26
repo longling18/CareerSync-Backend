@@ -18,8 +18,9 @@ class Result extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'User_id',
+        'user_id',
         'dep_id',
         'course_id',
     ];
+    public $timestamps = false;
 }

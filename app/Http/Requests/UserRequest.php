@@ -37,7 +37,6 @@ class UserRequest extends FormRequest
             return [
                 'first_name' => 'required|string|max:255',
                 'last_name' => 'required|string|max:255',
-                'email' => 'required|email|unique:users,email'
             ];
         } else if (request()->routeIs('user.email')) {
             return [
