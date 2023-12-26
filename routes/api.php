@@ -39,15 +39,16 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::controller(AuthController::class)->group(function () {
         Route::post('/logout',            'logout');
     });
-});
-Route::controller(ReviewController::class)->group(function () {
-    Route::get('/review',                 'index');
-    Route::get('/review/{id}',            'show');
-    Route::post('/review',                'store');
-    Route::delete('/review/{id}',         'destroy');
-});
 
-Route::controller(ResultController::class)->group(function () {
-    Route::get('/result',                 'index');
-    Route::post('/result',                'store');
+    Route::controller(ReviewController::class)->group(function () {
+        Route::get('/review',             'index');
+        Route::get('/review/{id}',        'show');
+        Route::post('/review',            'store');
+        Route::delete('/review/{id}',     'destroy');
+    });
+
+    Route::controller(ResultController::class)->group(function () {
+        Route::get('/result',             'index');
+        Route::post('/result',            'store');
+    });
 });

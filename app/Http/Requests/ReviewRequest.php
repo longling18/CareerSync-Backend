@@ -23,7 +23,6 @@ class ReviewRequest extends FormRequest
     {
         return [
             'comments'      => 'required|string',
-            'user_id'       => 'required|exists:users,id|integer',
         ];
     }
 }

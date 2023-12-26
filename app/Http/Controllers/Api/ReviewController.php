@@ -11,7 +11,7 @@ class ReviewController extends Controller
 {
     public function index(Request $request)
     {
-        $review = Review::select('review.review_id', 'users.first_name', 'review.comments')
+        $review = Review::select('review.review_id', 'users.first_name', 'users.last_name',  'review.comments')
             ->join('users', 'review.user_id', '=', 'users.id');
 
         /*if ($request->keyword) {
@@ -30,9 +30,16 @@ class ReviewController extends Controller
 
     public function store(ReviewRequest $request)
     {
+        // Validate the request data
         $validated = $request->validated();
 
-        $review = Review::create($validated);
+        // Get the authenticated user
+        $user = $request->user();
+
+        // Create and save the Review with the specified values
+        $review = $user->reviews()->create([
+            'comments' => $validated['comments'],
+        ]);
 
         return $review;
     }
