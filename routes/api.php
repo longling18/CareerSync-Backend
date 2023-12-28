@@ -29,15 +29,15 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::controller(UserController::class)->group(function () {
-        Route::put('/user/{id}',          'update')->name('user.update');
-        Route::get('/user/{id}',          'show');
-        Route::put('/user/password/{id}', 'password')->name('user.password');
-        Route::put('/user/email/{id}',    'email')->name('user.email');
-        Route::delete('/user/{id}',       'destroy');
+        Route::put('/user',               'update')->name('user.update');
+        Route::get('/user',               'show');
+        Route::put('/user/password',      'password')->name('user.password');
+        Route::put('/user/email',         'email')->name('user.email');
+        Route::delete('/user',            'destroy');
     });
 
     Route::controller(AuthController::class)->group(function () {
-        Route::post('/logout',            'logout');
+        Route::get('/logout',            'logout');
     });
 
     Route::controller(ReviewController::class)->group(function () {
